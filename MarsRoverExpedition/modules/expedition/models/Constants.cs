@@ -22,5 +22,30 @@
         /// 左边界格子
         /// </summary>
         public const int BoundaryTypeLeft = 4;
+        
+        /// <summary>
+        /// 旋转角度
+        /// </summary>
+        public const int RatateRange = 90;
+        
+        /// <summary>
+        /// 方向向上
+        /// </summary>
+        public const int DirectionUp = 0;
+        
+        /// <summary>
+        /// 方向向右
+        /// </summary>
+        public const int DirectionRight = 90;
+        
+        /// <summary>
+        /// 方向向下
+        /// </summary>
+        public const int DirectionDown = 180;
+        
+        /// <summary>
+        /// 方向向左
+        /// </summary>
+        public const int DirectionLeft = 270;
     }
 }

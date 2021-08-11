@@ -30,7 +30,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         /// 所有可探索区域
         /// </summary>
         public List<ZeroUnit> ZeroUnits { set; get; }
-        
+
         /// <summary>
         /// 重置单元格
         /// </summary>
@@ -65,6 +65,8 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
                     var zeroUnit = new ZeroUnit()
                     {
                         Id = ExpeditionHelper.GenerateId(xe, ye),
+                        X = xe,
+                        Y = ye,
                         PercyMark = false,
                         PercyMarkOrder = new List<int>(),
                         IngenuityMark = false,

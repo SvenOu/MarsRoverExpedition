@@ -13,6 +13,16 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         public string Id { set; get;}
         
         /// <summary>
+        /// x 坐标
+        /// </summary>
+        public string X { set; get;}
+        
+        /// <summary>
+        /// Y 坐标
+        /// </summary>
+        public string Y { set; get;}
+        
+        /// <summary>
         ///  是否有火星车探索过的痕迹
         /// </summary>
         public bool PercyMark { set; get;}
