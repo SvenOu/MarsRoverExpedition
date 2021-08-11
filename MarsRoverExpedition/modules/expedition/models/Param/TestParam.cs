@@ -1,4 +1,4 @@
-﻿namespace MarsRoverExpedition.modules.demo.models.Param
+﻿namespace MarsRoverExpedition.modules.expedition.models.Param
 {
     public class TestParam
     {

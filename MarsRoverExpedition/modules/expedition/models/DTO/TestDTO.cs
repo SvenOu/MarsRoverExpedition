@@ -1,4 +1,4 @@
-﻿namespace MarsRoverExpedition.modules.demo.models.DTO
+﻿namespace MarsRoverExpedition.modules.expedition.models.DTO
 {
     public class TestDTO
     {
