@@ -11,17 +11,21 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         /// <summary>
         /// x 轴
         /// </summary>
-        public readonly List<string> XAxis = new List<string>()
+        public List<string> XAxis { set; get; } = new List<string>()
         {
-            "A", "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y"
+            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
+            "V", "W", "X", "Y"
         };
+
         /// <summary>
         /// Y 轴
         /// </summary>
-        public readonly List<string> YAxis = new List<string>()
+        public List<string> YAxis { set; get; } = new List<string>()
         {
-            "1", "2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
+            "20", "21", "22", "23", "24", "25"
         };
+
         /// <summary>
         /// 所有可探索区域
         /// </summary>
@@ -49,7 +53,8 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
                     if (j == 0)
                     {
                         boundaryType = Constants.BoundaryTypeUp;
-                    }else if (i == XAxis.Count - 1)
+                    }
+                    else if (i == XAxis.Count - 1)
                     {
                         boundaryType = Constants.BoundaryTypeRight;
                     }
