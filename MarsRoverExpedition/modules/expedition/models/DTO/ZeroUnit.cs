@@ -42,6 +42,6 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         ///  边界类型
         ///  0：不是边界, 1:上边界, 2: 右边界， 3：下边界， 4：左边界
         /// </summary>
-        public int BoundaryType { set; get;}
+        public List<int> BoundaryType { set; get;}
     }
 }

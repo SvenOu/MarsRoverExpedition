@@ -27,11 +27,11 @@
         {
             if (Direction == Constants.DirectionUp)
             {
-                Direction = 360 - Constants.RatateRange;
+                Direction = 360 - Constants.RotateRange;
             }
             else
             {
-                Direction = Direction - Constants.RatateRange;
+                Direction = Direction - Constants.RotateRange;
             }
         }
         /// <summary>
@@ -39,7 +39,7 @@
         /// </summary>
         public void RotateRight()
         {
-            Direction = Direction + Constants.RatateRange;
+            Direction = Direction + Constants.RotateRange;
             if (Direction >= 360)
             {
                 Direction = 0;

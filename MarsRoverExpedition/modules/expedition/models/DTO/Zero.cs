@@ -43,23 +43,30 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
                 for (int j = 0; j < YAxis.Count; j++)
                 {
                     string ye = YAxis[i];
-
-                    int boundaryType = Constants.BoundaryTypeNone;
+                    List<int> boundaryTypes = new List<int>();
                     if (j == 0)
                     {
-                        boundaryType = Constants.BoundaryTypeUp;
+                        boundaryTypes.Add(Constants.BoundaryTypeUp);
                     }
-                    else if (i == XAxis.Count - 1)
+
+                    if (i == XAxis.Count - 1)
                     {
-                        boundaryType = Constants.BoundaryTypeRight;
+                        boundaryTypes.Add(Constants.BoundaryTypeRight);
                     }
-                    else if (j == YAxis.Count - 1)
+
+                    if (j == YAxis.Count - 1)
                     {
-                        boundaryType = Constants.BoundaryTypeDown;
+                        boundaryTypes.Add(Constants.BoundaryTypeDown);
                     }
-                    else if (i == 0)
+
+                    if (i == 0)
                     {
-                        boundaryType = Constants.BoundaryTypeLeft;
+                        boundaryTypes.Add(Constants.BoundaryTypeLeft);
+                    }
+
+                    if (boundaryTypes.Count <= 0)
+                    {
+                        boundaryTypes.Add(Constants.BoundaryTypeNone);
                     }
 
                     var zeroUnit = new ZeroUnit()
@@ -70,7 +77,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
                         PercyMark = false,
                         PercyMarkOrder = new List<int>(),
                         IngenuityMark = false,
-                        BoundaryType = boundaryType
+                        BoundaryType = boundaryTypes
                     };
                     ZeroUnits.Add(zeroUnit);
                 }

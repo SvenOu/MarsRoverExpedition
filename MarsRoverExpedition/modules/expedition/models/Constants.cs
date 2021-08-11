@@ -26,7 +26,7 @@
         /// <summary>
         /// 旋转角度
         /// </summary>
-        public const int RatateRange = 90;
+        public const int RotateRange = 90;
         
         /// <summary>
         /// 方向向上
