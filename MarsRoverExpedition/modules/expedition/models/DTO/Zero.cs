@@ -30,16 +30,11 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         /// 所有可探索区域
         /// </summary>
         public List<ZeroUnit> ZeroUnits { set; get; }
-
-        public Zero()
-        {
-            Init();
-        }
-
+        
         /// <summary>
         /// 重置单元格
         /// </summary>
-        public void Init()
+        public Zero Init()
         {
             ZeroUnits = new List<ZeroUnit>();
             for (int i = 0; i < XAxis.Count; i++)
@@ -78,6 +73,8 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
                     ZeroUnits.Add(zeroUnit);
                 }
             }
+
+            return this;
         }
     }
 }
