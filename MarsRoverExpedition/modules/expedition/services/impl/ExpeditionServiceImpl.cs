@@ -17,9 +17,9 @@ namespace MarsRoverExpedition.modules.expedition.services.impl
             _expeditionDao = new ExpeditionDaoImpl();
         }
         
-        public  CommonResponse<TestDTO>  getDataFromTestService(TestParam testParam)
+        public  CommonResponse<TestDto>  getDataFromTestService(TestParam testParam)
         {
-            return CommonResponse<TestDTO>.Success(_expeditionDao.getDataFromTestDao(testParam));
+            return CommonResponse<TestDto>.Success(_expeditionDao.getDataFromTestDao(testParam));
         }
     }
 }

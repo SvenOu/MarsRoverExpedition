@@ -5,9 +5,9 @@ namespace MarsRoverExpedition.modules.expedition.daos.impl
 {
     public class ExpeditionDaoImpl:IExpeditionDao
     {
-        public TestDTO getDataFromTestDao(TestParam testParam)
+        public TestDto getDataFromTestDao(TestParam testParam)
         {
-            var testDto = new TestDTO();
+            var testDto = new TestDto();
             testDto.text = "data from ExpeditionDaoImpl";
             return testDto;
         }

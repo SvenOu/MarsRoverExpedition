@@ -5,6 +5,6 @@ namespace MarsRoverExpedition.modules.expedition.daos
 {
     public interface IExpeditionDao
     {
-        TestDTO getDataFromTestDao(TestParam testParam);
+        TestDto getDataFromTestDao(TestParam testParam);
     }
 }
