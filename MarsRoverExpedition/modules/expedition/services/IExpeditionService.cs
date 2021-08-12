@@ -12,6 +12,11 @@ namespace MarsRoverExpedition.modules.expedition.services
         /// <returns></returns>
         CommonResponse<object> ExcutingAnOrder(ExcutingAnOrderParam param);
 
+        /// <summary>
+        /// 执行火星车命令并返回轨迹
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
         CommonResponse<object> ExcutingAnOrderAndReturnUnits(ExcutingAnOrderParam param);
     }
 }
