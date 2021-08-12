@@ -35,5 +35,19 @@ namespace MarsRoverExpedition.test.expedition
             Console.WriteLine(JsonConvert.SerializeObject(result));
             Assert.Pass();
         }
+        
+        [Test]
+        public void Test_ExcutingAnOrderAndReturnUnits()
+        {
+            ExcutingAnOrderParam param = new ExcutingAnOrderParam()
+            {
+                Order = "FFFLFFRBBHFFFFF",
+                LandId = "H17",
+                Direction = 0
+            };
+            var result = _expeditionService.ExcutingAnOrderAndReturnUnits(param);
+            Console.WriteLine(JsonConvert.SerializeObject(result));
+            Assert.Pass();
+        }
     }
 }

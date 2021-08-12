@@ -12,5 +12,7 @@ namespace MarsRoverExpedition.modules.expedition.services
         /// <param name="param"></param>
         /// <returns></returns>
         CommonResponse<object> ExcutingAnOrder(ExcutingAnOrderParam param);
+
+        CommonResponse<object> ExcutingAnOrderAndReturnUnits(ExcutingAnOrderParam param);
     }
 }

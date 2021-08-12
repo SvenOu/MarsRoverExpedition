@@ -42,6 +42,7 @@ namespace MarsRoverExpedition.test.expedition
         public void Setup()
         {
             ConfigFunction.InitByFilePath("appsettings.Development.json");
+            // 动态规划思想，用小场地测试
             _area = new Area()
             {
                 XAxis = new List<string>()
@@ -90,7 +91,7 @@ namespace MarsRoverExpedition.test.expedition
         {
             ExcutingAnOrderParam param = new ExcutingAnOrderParam()
             {
-                Order = "FFLFRBBHFFFFF",
+                Order = "FFHLFRBBFFFFF",
                 LandId = "C4",
                 Direction = 0
             };

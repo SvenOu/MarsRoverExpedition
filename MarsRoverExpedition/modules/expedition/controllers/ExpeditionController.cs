@@ -25,5 +25,17 @@ namespace MarsRoverExpedition.modules.expedition.controllers
         {
             return _expeditionService.ExcutingAnOrder(param);
         }
+        
+        
+        /// <summary>
+        /// 执行火星车命令
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public object ExcutingAnOrderAndReturnUnits(ExcutingAnOrderParam param)
+        {
+            return _expeditionService.ExcutingAnOrderAndReturnUnits(param);
+        }
     }
 }
