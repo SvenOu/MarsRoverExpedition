@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MarsRoverExpedition.modules.common.Helper;
 
-namespace MarsRoverExpedition.modules.expedition.models.DTO
+namespace MarsRoverExpedition.modules.expedition.models.dto
 {
     /// <summary>
     /// 场地

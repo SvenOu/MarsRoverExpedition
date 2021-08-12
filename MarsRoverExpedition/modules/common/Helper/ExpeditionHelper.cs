@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MarsRoverExpedition.modules.expedition.models;
-using MarsRoverExpedition.modules.expedition.models.DTO;
+using MarsRoverExpedition.modules.expedition.models.dto;
 
 namespace MarsRoverExpedition.modules.common.Helper
 {

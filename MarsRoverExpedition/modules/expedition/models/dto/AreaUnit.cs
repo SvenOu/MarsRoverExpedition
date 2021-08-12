@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MarsRoverExpedition.modules.expedition.models.DTO
+namespace MarsRoverExpedition.modules.expedition.models.dto
 {
     /// <summary>
     /// 场地内可探索区域

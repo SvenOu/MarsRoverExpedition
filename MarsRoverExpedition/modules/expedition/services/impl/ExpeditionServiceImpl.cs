@@ -2,7 +2,7 @@
 using System.Linq;
 using MarsRoverExpedition.modules.common.Helper;
 using MarsRoverExpedition.modules.common.Model;
-using MarsRoverExpedition.modules.expedition.models.DTO;
+using MarsRoverExpedition.modules.expedition.models.dto;
 using MarsRoverExpedition.modules.expedition.models.Param;
 using Newtonsoft.Json;
 

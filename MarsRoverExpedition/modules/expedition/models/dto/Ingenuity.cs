@@ -2,7 +2,7 @@
 using MarsRoverExpedition.modules.common.Helper;
 using MarsRoverExpedition.modules.expedition.models.design;
 
-namespace MarsRoverExpedition.modules.expedition.models.DTO
+namespace MarsRoverExpedition.modules.expedition.models.dto
 {
 
 

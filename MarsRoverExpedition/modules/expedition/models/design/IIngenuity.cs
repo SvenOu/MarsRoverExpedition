@@ -1,4 +1,4 @@
-﻿using MarsRoverExpedition.modules.expedition.models.DTO;
+﻿using MarsRoverExpedition.modules.expedition.models.dto;
 
 namespace MarsRoverExpedition.modules.expedition.models.design
 {

@@ -3,7 +3,7 @@ using MarsRoverExpedition.modules.common.Helper;
 using MarsRoverExpedition.modules.expedition.models.design;
 using Newtonsoft.Json;
 
-namespace MarsRoverExpedition.modules.expedition.models.DTO
+namespace MarsRoverExpedition.modules.expedition.models.dto
 {
     /// <summary>
     /// 火星车
