@@ -16,12 +16,26 @@ namespace MarsRoverExpedition.modules.expedition.services.impl
                 CommonResponse<object>.Fail("order is empty!");
             }
             var order= param.Order?.ToUpper();
+            var landId = param.LandId?.ToUpper();
             var area = new Area().Init();
             var percy = new Percy()
             {
                 Area = area,
             };
-            percy.ExcutingAnOrder(order, param.LandId, param.Direction);
+            
+            AreaUnit landUnit = null;
+            if (string.IsNullOrEmpty(landId))
+            {
+                landUnit = ExpeditionHelper.RandomLocation(area);
+            }
+            else
+            {
+                landUnit = ExpeditionHelper.FindUnitById(area, landId);
+            }
+            percy.Land(landUnit, param.Direction);
+            
+            percy.ExcutingAnOrder(order);
+            
             AreaUnit lastStep = ExpeditionHelper.FindPercyLastStep(area);
             float explorePercentage  = ExpeditionHelper.FindExplorePercentage(area, 0);
             return CommonResponse<object>.Success(new

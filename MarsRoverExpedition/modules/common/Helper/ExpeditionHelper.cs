@@ -213,9 +213,12 @@ namespace MarsRoverExpedition.modules.common.Helper
                 if (lastUnit == null)
                 {
                     lastUnit = unit;
-                }else if (lastUnit.PercyMarkOrder.Max() < unit.PercyMarkOrder.Max())
+                }else if (unit.PercyMarkOrder.Count >0)
                 {
-                    lastUnit = unit;
+                    if (lastUnit.PercyMarkOrder.Count <=0 || unit.PercyMarkOrder.Max() > lastUnit.PercyMarkOrder.Max())
+                    {
+                        lastUnit = unit;
+                    }
                 }
             }
             return lastUnit;

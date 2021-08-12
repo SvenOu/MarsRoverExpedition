@@ -110,39 +110,26 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         /// </summary>
         /// <param name="order"></param>
         /// <param name="landUnit"></param>
-        public void ExcutingAnOrder(string order, string landId, int direction)
+        public void ExcutingAnOrder(string order)
         {
-            AreaUnit landUnit = null;
-            if (string.IsNullOrEmpty(landId))
-            {
-                landUnit = ExpeditionHelper.RandomLocation(Area);
-            }
-            else
-            {
-                landUnit = ExpeditionHelper.FindUnitById(Area, landId);
-            }
             for (int i = 0; i < order.Length; i++)
             {
                 char c = order[i];
-                if (i == 0)
+                switch (c)
                 {
-                    Land(landUnit, direction);
-                }
-                else
-                {
-                    switch (c)
-                    {
-                        case 'F':  GoAhead();
-                            break;
-                        case 'B':  GoBack();
-                            break;
-                        case 'L':  RotateLeft();
-                            break;
-                        case 'R':  RotateRight();
-                            break;
-                    }
+                    case 'F':  GoAhead();
+                        break;
+                    case 'B':  GoBack();
+                        break;
+                    case 'L':  RotateLeft();
+                        break;
+                    case 'R':  RotateRight();
+                        break;
+                    case 'H':  ReleaseIngenuity();
+                        break;
                 }
             }
+            Console.Write("");
         }
 
         /// <summary>

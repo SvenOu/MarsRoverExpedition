@@ -5,6 +5,7 @@ using MarsRoverExpedition.modules.common.Config;
 using MarsRoverExpedition.modules.common.Helper;
 using MarsRoverExpedition.modules.expedition.models;
 using MarsRoverExpedition.modules.expedition.models.DTO;
+using MarsRoverExpedition.modules.expedition.models.Param;
 using MarsRoverExpedition.modules.expedition.services;
 using MarsRoverExpedition.modules.expedition.services.impl;
 using Newtonsoft.Json;
@@ -83,6 +84,53 @@ namespace MarsRoverExpedition.test.expedition
         [TearDown]
         public void Close()
         {
+        }
+        [Test]
+        public void Test_ExcutingAnOrder()
+        {
+            ExcutingAnOrderParam param = new ExcutingAnOrderParam()
+            {
+                Order = "FFLFRBBHFFFFF",
+                LandId = "C4",
+                Direction = 0
+            };
+            
+            AreaUnit landUnit = null;
+            if (string.IsNullOrEmpty(param.LandId))
+            {
+                landUnit = ExpeditionHelper.RandomLocation(_area);
+            }
+            else
+            {
+                landUnit = ExpeditionHelper.FindUnitById(_area, param.LandId);
+            }
+            
+            _percy.Land(landUnit, param.Direction);
+            
+            _percy.ExcutingAnOrder(param.Order);
+            
+            Console.WriteLine("-----Percy and Ingenuity------");
+            Console.WriteLine(JsonConvert.SerializeObject(ExpeditionHelper.FindExploreUnits(_area, 0).Select(p => p.Id).ToList()));
+            
+            Console.WriteLine("-----Percy------");
+            Console.WriteLine(JsonConvert.SerializeObject(ExpeditionHelper.FindExploreUnits(_area, 1).Select(p => p.Id).ToList()));
+            
+            Console.WriteLine("-----Ingenuity------");
+            Console.WriteLine(JsonConvert.SerializeObject(ExpeditionHelper.FindExploreUnits(_area, 2).Select(p => p.Id).ToList()));
+            
+            AreaUnit lastStep = ExpeditionHelper.FindPercyLastStep(_area);
+            float explorePercentage  = ExpeditionHelper.FindExplorePercentage(_area, 0);
+            var result = new
+            {
+                LastStep = lastStep.X + lastStep.Y,
+                ExplorePercentage = explorePercentage * 100.0f + "%"
+            };
+            
+            Console.WriteLine("------_area.AreaUnits--------");
+            Console.WriteLine(JsonConvert.SerializeObject(_area.AreaUnits));
+            
+            Console.WriteLine(JsonConvert.SerializeObject(result));
+            Assert.Pass();
         }
 
         [Test]
