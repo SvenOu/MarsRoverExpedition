@@ -241,7 +241,7 @@ namespace MarsRoverExpedition.modules.common.Helper
         }
         
         /// <summary>
-        /// 查找百分比
+        /// 查找单元格
         /// type: 0 火星车 and 迷你直升机
         /// type: 1 火星车
         /// type: 2 迷你直升机
