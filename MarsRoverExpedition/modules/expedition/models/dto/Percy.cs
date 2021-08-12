@@ -143,7 +143,7 @@ namespace MarsRoverExpedition.modules.expedition.models.dto
             StepCount++;
             if (location == null)
             {
-                Console.WriteLine($"{JsonConvert.SerializeObject(Location)} back step is Boundary");
+                Console.WriteLine($"{JsonConvert.SerializeObject(Location)} current step is Boundary");
                 return;
             }
             Direction = direction;
