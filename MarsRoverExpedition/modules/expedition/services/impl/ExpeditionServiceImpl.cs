@@ -20,11 +20,10 @@ namespace MarsRoverExpedition.modules.expedition.services.impl
             var percy = new Percy()
             {
                 Area = area,
-                Location = ExpeditionHelper.RandomLocation(area)
             };
-            percy.ExcutingAnOrder(order);
-            AreaUnit lastStep = ExpeditionHelper.FindLatStep(area);
-            float explorePercentage  = ExpeditionHelper.FindExplorePercentage(area);
+            percy.ExcutingAnOrder(order, param.LandId, param.Direction);
+            AreaUnit lastStep = ExpeditionHelper.FindPercyLastStep(area);
+            float explorePercentage  = ExpeditionHelper.FindExplorePercentage(area, 0);
             return CommonResponse<object>.Success(new
             {
                 LastStep = lastStep.X+lastStep.Y,

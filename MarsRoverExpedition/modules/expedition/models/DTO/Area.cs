@@ -29,14 +29,14 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         /// <summary>
         /// 所有可探索区域
         /// </summary>
-        public List<AreaUnit> ZeroUnits { set; get; }
+        public List<AreaUnit> AreaUnits { set; get; }
 
         /// <summary>
         /// 重置单元格
         /// </summary>
         public Area Init()
         {
-            ZeroUnits = new List<AreaUnit>();
+            AreaUnits = new List<AreaUnit>();
             for (int i = 0; i < XAxis.Count; i++)
             {
                 string xe = XAxis[i];
@@ -69,7 +69,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
                         boundaryTypes.Add(Constants.BoundaryTypeNone);
                     }
 
-                    var zeroUnit = new AreaUnit()
+                    var areaUnit = new AreaUnit()
                     {
                         Id = ExpeditionHelper.GenerateId(xe, ye),
                         X = xe,
@@ -79,7 +79,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
                         IngenuityMark = false,
                         BoundaryType = boundaryTypes
                     };
-                    ZeroUnits.Add(zeroUnit);
+                    AreaUnits.Add(areaUnit);
                 }
             }
 

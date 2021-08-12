@@ -109,22 +109,60 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         /// 执行命令
         /// </summary>
         /// <param name="order"></param>
-        public void ExcutingAnOrder(string order)
+        /// <param name="landUnit"></param>
+        public void ExcutingAnOrder(string order, string landId, int direction)
         {
-            foreach (var c in order)
+            AreaUnit landUnit = null;
+            if (string.IsNullOrEmpty(landId))
             {
-                switch (c)
+                landUnit = ExpeditionHelper.RandomLocation(Area);
+            }
+            else
+            {
+                landUnit = ExpeditionHelper.FindUnitById(Area, landId);
+            }
+            for (int i = 0; i < order.Length; i++)
+            {
+                char c = order[i];
+                if (i == 0)
                 {
-                    case 'F':  GoAhead();
-                        break;
-                    case 'B':  GoBack();
-                        break;
-                    case 'L':  RotateLeft();
-                        break;
-                    case 'R':  RotateRight();
-                        break;
+                    Land(landUnit, direction);
+                }
+                else
+                {
+                    switch (c)
+                    {
+                        case 'F':  GoAhead();
+                            break;
+                        case 'B':  GoBack();
+                            break;
+                        case 'L':  RotateLeft();
+                            break;
+                        case 'R':  RotateRight();
+                            break;
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        ///  登陆
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="direction"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void Land(AreaUnit location, int direction =Constants.DirectionUp)
+        {
+            StepCount++;
+            if (location == null)
+            {
+                Console.WriteLine($"{JsonConvert.SerializeObject(Location)} back step is Boundary");
+                return;
+            }
+            Direction = direction;
+            location.PercyMark = true;
+            location.PercyMarkOrder.Add(StepCount);
+            Location = location;
         }
     }
 }

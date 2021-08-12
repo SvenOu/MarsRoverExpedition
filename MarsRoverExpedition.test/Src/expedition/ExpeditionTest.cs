@@ -56,7 +56,7 @@ namespace MarsRoverExpedition.test.expedition
             {
                 Area = _area,
             };
-            var zeroUnits = _area.ZeroUnits;
+            var zeroUnits = _area.AreaUnits;
             Console.Write(JsonConvert.SerializeObject(zeroUnits));
             
             A1 = zeroUnits.Find(c => c.Id.Equals("A1"));
@@ -97,16 +97,12 @@ namespace MarsRoverExpedition.test.expedition
         [Test]
         public void Test_FindAheadUnit()
         {
-            _percy.Location = C3;
+            _percy.Land(C3);
             _percy.RotateLeft();
             _percy.RotateLeft();
             _percy.RotateLeft();
             _percy.RotateLeft();
             _percy.RotateLeft();
-            Assert.IsTrue(ExpeditionHelper.FindAheadUnit(
-                _percy.Location,
-                _percy.Direction, 
-                _area) == B3);
             _percy.GoAhead();
             Assert.IsTrue(_percy.Location == B3);
             _percy.RotateRight();
@@ -116,13 +112,33 @@ namespace MarsRoverExpedition.test.expedition
             _percy.RotateRight();
             _percy.GoAhead();
             Assert.IsTrue(_percy.Location == B2);
+            _percy.GoAhead();
+            Assert.IsTrue(_percy.Location == B1);
+            _percy.GoBack();
+            _percy.GoBack();
+            _percy.GoBack();
+            _percy.GoBack();
+            Assert.IsTrue(_percy.Location == B4);
+            _percy.RotateLeft();
+            _percy.GoAhead();
+            Assert.IsTrue(_percy.Location == A4);
+            _percy.GoAhead();
+            Assert.IsTrue(_percy.Location == A4);
+            _percy.ReleaseIngenuity();
+
+            Console.WriteLine("-----Percy and Ingenuity------");
+            Console.WriteLine(JsonConvert.SerializeObject(ExpeditionHelper.FindExploreUnits(_area, 0).Select(p => p.Id).ToList()));
+            
+            Console.WriteLine("-----Percy------");
+            Console.WriteLine(JsonConvert.SerializeObject(ExpeditionHelper.FindExploreUnits(_area, 1).Select(p => p.Id).ToList()));
+            
+            Console.WriteLine("-----Ingenuity------");
+            Console.WriteLine(JsonConvert.SerializeObject(ExpeditionHelper.FindExploreUnits(_area, 2).Select(p => p.Id).ToList()));
         }
 
         [Test]
         public void TestArea()
         {
-        
-
             Assert.IsTrue(A1.BoundaryType.Contains(Constants.BoundaryTypeLeft) &&
                           A1.BoundaryType.Contains(Constants.BoundaryTypeUp));
             Assert.IsTrue(A2.BoundaryType.Contains(Constants.BoundaryTypeLeft));
