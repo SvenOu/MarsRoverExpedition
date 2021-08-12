@@ -153,47 +153,47 @@ namespace MarsRoverExpedition.modules.common.Helper
             x = GetTargetAxis(area.XAxis, location.X, -1);
             y = GetTargetAxis(area.YAxis, location.Y, -1);
             var unit2 = area.AreaUnits.Find(c => c.Id.Equals(GenerateId(x, y)));
-            if (unit2 !=new AreaUnit())
+            if (unit2 !=null)
             {
                 aroundUnits.Add(unit2);
             }
             x = GetTargetAxis(area.XAxis, location.X, 1);
             y = GetTargetAxis(area.YAxis, location.Y, -1);
             var unit3 = area.AreaUnits.Find(c => c.Id.Equals(GenerateId(location.X, y)));
-            if (unit3 !=new AreaUnit())
+            if (unit3 !=null)
             {
                 aroundUnits.Add(unit3);
             }
             x = GetTargetAxis(area.XAxis, location.X, 1);
             y = GetTargetAxis(area.YAxis, location.Y, -1);
             var unit4 = area.AreaUnits.Find(c => c.Id.Equals(GenerateId(x, y)));
-            if (unit4 !=new AreaUnit())
+            if (unit4 !=null)
             {
                 aroundUnits.Add(unit4);
             }
             x = GetTargetAxis(area.XAxis, location.X, 1);
             var unit5 = area.AreaUnits.Find(c => c.Id.Equals(GenerateId(x, location.Y)));
-            if (unit5 !=new AreaUnit())
+            if (unit5 !=null)
             {
                 aroundUnits.Add(unit5);
             }
             x = GetTargetAxis(area.XAxis, location.X, 1);
             y = GetTargetAxis(area.YAxis, location.Y, 1);
             var unit6 = area.AreaUnits.Find(c => c.Id.Equals(GenerateId(x, y)));
-            if (unit6 !=new AreaUnit())
+            if (unit6 !=null)
             {
                 aroundUnits.Add(unit6);
             }
             y = GetTargetAxis(area.YAxis, location.Y, 1);
             var unit7 = area.AreaUnits.Find(c => c.Id.Equals(GenerateId(location.X, y)));
-            if (unit7 !=new AreaUnit())
+            if (unit7 !=null)
             {
                 aroundUnits.Add(unit7);
             }
             x = GetTargetAxis(area.XAxis, location.X, -1);
             y = GetTargetAxis(area.YAxis, location.Y, 1);
             var unit8 = area.AreaUnits.Find(c => c.Id.Equals(GenerateId(x, y)));
-            if (unit8 !=new AreaUnit())
+            if (unit8 !=null)
             {
                 aroundUnits.Add(unit8);
             }
