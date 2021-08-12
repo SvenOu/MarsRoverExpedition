@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MarsRoverExpedition.modules.expedition.models.DTO;
 
 namespace MarsRoverExpedition.modules.common.Helper
@@ -13,9 +14,18 @@ namespace MarsRoverExpedition.modules.common.Helper
         /// <returns></returns>
         public static string GenerateId(string x, string y)
         {
-            return $"{x}-{y}";
+            return $"{x}{y}";
         }
-        
+        /// <summary>
+        /// 获取随机位置
+        /// </summary>
+        /// <param name="area"></param>
+        /// <returns></returns>
+        public static AreaUnit RandomLocation(Area area)
+        {
+           var rIndex = new Random().Next(0, area.ZeroUnits.Count);
+           return area.ZeroUnits[rIndex];
+        }
         /// <summary>
         /// 查找前面的格子
         /// </summary>
@@ -25,6 +35,7 @@ namespace MarsRoverExpedition.modules.common.Helper
         /// <returns></returns>
         public static AreaUnit FindAheadUnit(AreaUnit location, int direction, Area area)
         {
+            
             return null;
         }
 

@@ -16,10 +16,11 @@ namespace MarsRoverExpedition.modules.expedition.services.impl
                 CommonResponse<object>.Fail("order is empty!");
             }
             var order= param.Order?.ToUpper();
-            var area = new Area();
+            var area = new Area().Init();
             var percy = new Percy()
             {
-                Area = area
+                Area = area,
+                Location = ExpeditionHelper.RandomLocation(area)
             };
             percy.ExcutingAnOrder(order);
             AreaUnit lastStep = ExpeditionHelper.FindLatStep(area);

@@ -42,7 +42,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
                 string xe = XAxis[i];
                 for (int j = 0; j < YAxis.Count; j++)
                 {
-                    string ye = YAxis[i];
+                    string ye = YAxis[j];
                     List<int> boundaryTypes = new List<int>();
                     if (j == 0)
                     {
