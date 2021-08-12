@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using MarsRoverExpedition.modules.common.Helper;
+using MarsRoverExpedition.modules.expedition.models.design;
 
 namespace MarsRoverExpedition.modules.expedition.models.DTO
 {
+
+
     /// <summary>
     /// 迷你直升机
     /// </summary>
-    public class Ingenuity
+    public class Ingenuity:IIngenuity
     {
         /// <summary>
         /// 探索

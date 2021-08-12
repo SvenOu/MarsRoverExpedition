@@ -1,5 +1,6 @@
 ﻿using System;
 using MarsRoverExpedition.modules.common.Helper;
+using MarsRoverExpedition.modules.expedition.models.design;
 using Newtonsoft.Json;
 
 namespace MarsRoverExpedition.modules.expedition.models.DTO
@@ -7,7 +8,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
     /// <summary>
     /// 火星车
     /// </summary>
-    public class Percy
+    public class Percy:IPercy
     {
         /// <summary>
         ///  方向. 默认向上
@@ -32,7 +33,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         /// <summary>
         /// 迷你直升机
         /// </summary>
-        public Ingenuity Ingenuity { get; set; }
+        public IIngenuity Ingenuity { get; set; }
 
         public Percy()
         {
