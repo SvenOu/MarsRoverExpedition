@@ -110,7 +110,6 @@ namespace MarsRoverExpedition.modules.expedition.models.dto
         /// 执行命令
         /// </summary>
         /// <param name="order"></param>
-        /// <param name="landUnit"></param>
         public void ExcutingAnOrder(string order)
         {
             for (int i = 0; i < order.Length; i++)

@@ -34,7 +34,6 @@ namespace MarsRoverExpedition.modules.expedition.models.design
         /// 执行命令
         /// </summary>
         /// <param name="order"></param>
-        /// <param name="landUnit"></param>
         void ExcutingAnOrder(string order);
 
         /// <summary>

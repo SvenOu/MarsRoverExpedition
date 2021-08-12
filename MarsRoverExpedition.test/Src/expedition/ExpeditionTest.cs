@@ -6,8 +6,6 @@ using MarsRoverExpedition.modules.common.Helper;
 using MarsRoverExpedition.modules.expedition.models;
 using MarsRoverExpedition.modules.expedition.models.dto;
 using MarsRoverExpedition.modules.expedition.models.Param;
-using MarsRoverExpedition.modules.expedition.services;
-using MarsRoverExpedition.modules.expedition.services.impl;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
