@@ -28,7 +28,7 @@ namespace MarsRoverExpedition.modules.expedition.controllers
         
         
         /// <summary>
-        /// 执行火星车命令
+        /// 执行火星车命令并返回轨迹
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
