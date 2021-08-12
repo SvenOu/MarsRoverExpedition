@@ -15,18 +15,15 @@ namespace MarsRoverExpedition.modules.expedition.controllers
         {
             _expeditionService = new ExpeditionServiceImpl();
         }
-
-
         /// <summary>
-        /// just for test
+        /// 执行火星车命令
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
         [HttpPost]
-        public object AddTestData(TestParam param)
+        public object ExcutingAnOrder(ExcutingAnOrderParam param)
         {
-            return _expeditionService.getDataFromTestService(param);
+            return _expeditionService.ExcutingAnOrder(param);
         }
-        
     }
 }

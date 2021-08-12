@@ -6,7 +6,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
     /// <summary>
     /// 场地
     /// </summary>
-    public class Zero
+    public class Area
     {
         /// <summary>
         /// x 轴
@@ -29,14 +29,14 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
         /// <summary>
         /// 所有可探索区域
         /// </summary>
-        public List<ZeroUnit> ZeroUnits { set; get; }
+        public List<AreaUnit> ZeroUnits { set; get; }
 
         /// <summary>
         /// 重置单元格
         /// </summary>
-        public Zero Init()
+        public Area Init()
         {
-            ZeroUnits = new List<ZeroUnit>();
+            ZeroUnits = new List<AreaUnit>();
             for (int i = 0; i < XAxis.Count; i++)
             {
                 string xe = XAxis[i];
@@ -69,7 +69,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
                         boundaryTypes.Add(Constants.BoundaryTypeNone);
                     }
 
-                    var zeroUnit = new ZeroUnit()
+                    var zeroUnit = new AreaUnit()
                     {
                         Id = ExpeditionHelper.GenerateId(xe, ye),
                         X = xe,

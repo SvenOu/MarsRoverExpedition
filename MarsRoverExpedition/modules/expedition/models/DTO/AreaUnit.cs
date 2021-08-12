@@ -5,7 +5,7 @@ namespace MarsRoverExpedition.modules.expedition.models.DTO
     /// <summary>
     /// 场地内可探索区域
     /// </summary>
-    public class ZeroUnit
+    public class AreaUnit
     {
         /// <summary>
         /// 根据坐标轴生成

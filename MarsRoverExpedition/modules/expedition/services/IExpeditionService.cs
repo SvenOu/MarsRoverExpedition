@@ -6,6 +6,11 @@ namespace MarsRoverExpedition.modules.expedition.services
 {
     public interface IExpeditionService
     {
-        CommonResponse<TestDto> getDataFromTestService(TestParam param);
+        /// <summary>
+        /// 执行火星车命令
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        CommonResponse<object> ExcutingAnOrder(ExcutingAnOrderParam param);
     }
 }

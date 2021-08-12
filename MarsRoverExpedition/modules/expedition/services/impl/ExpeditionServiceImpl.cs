@@ -1,25 +1,34 @@
-﻿using MarsRoverExpedition.modules.common.Model;
-using MarsRoverExpedition.modules.expedition.daos;
-using MarsRoverExpedition.modules.expedition.daos.impl;
+﻿using MarsRoverExpedition.modules.common.Helper;
+using MarsRoverExpedition.modules.common.Model;
 using MarsRoverExpedition.modules.expedition.models.DTO;
 using MarsRoverExpedition.modules.expedition.models.Param;
 
 namespace MarsRoverExpedition.modules.expedition.services.impl
 {
-   
-    public class ExpeditionServiceImpl: IExpeditionService
+    public class ExpeditionServiceImpl : IExpeditionService
     {
-        private readonly IExpeditionDao _expeditionDao;
- 
+        public ExpeditionServiceImpl() {}
 
-        public ExpeditionServiceImpl()
+        public CommonResponse<object> ExcutingAnOrder(ExcutingAnOrderParam param)
         {
-            _expeditionDao = new ExpeditionDaoImpl();
-        }
-        
-        public  CommonResponse<TestDto>  getDataFromTestService(TestParam testParam)
-        {
-            return CommonResponse<TestDto>.Success(_expeditionDao.getDataFromTestDao(testParam));
+            if (string.IsNullOrEmpty(param.Order))
+            {
+                CommonResponse<object>.Fail("order is empty!");
+            }
+            var order= param.Order?.ToUpper();
+            var area = new Area();
+            var percy = new Percy()
+            {
+                Area = area
+            };
+            percy.ExcutingAnOrder(order);
+            AreaUnit lastStep = ExpeditionHelper.FindLatStep(area);
+            float explorePercentage  = ExpeditionHelper.FindExplorePercentage(area);
+            return CommonResponse<object>.Success(new
+            {
+                LastStep = lastStep.X+lastStep.Y,
+                ExplorePercentage = explorePercentage * 100.0f + "%" 
+            });
         }
     }
 }

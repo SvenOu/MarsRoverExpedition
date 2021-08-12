@@ -1,4 +1,8 @@
-﻿namespace MarsRoverExpedition.modules.expedition.models.DTO
+﻿using System;
+using MarsRoverExpedition.modules.common.Helper;
+using Newtonsoft.Json;
+
+namespace MarsRoverExpedition.modules.expedition.models.DTO
 {
     /// <summary>
     /// 火星车
@@ -11,14 +15,29 @@
         public int Direction { get; set; } = Constants.DirectionUp;
         
         /// <summary>
+        ///  一共走了多少步,即当前最后一步（包含遇到边界不动的情况）
+        /// </summary>
+        public int StepCount { get; set; } = 0;
+        
+        /// <summary>
         ///  位置
         /// </summary>
-        public ZeroUnit Location { get; set; }
+        public AreaUnit Location { get; set; }
         
         /// <summary>
         ///  场地
         /// </summary>
-        public Zero Zero { get; set; }
+        public Area Area { get; set; }
+        
+        /// <summary>
+        /// 迷你直升机
+        /// </summary>
+        public Ingenuity Ingenuity { get; set; }
+
+        public Percy()
+        {
+            Ingenuity = new Ingenuity();
+        }
 
         /// <summary>
         /// 左转
@@ -50,33 +69,61 @@
         /// </summary>
         public void GoAhead ()
         {
-            switch (Direction)
+            StepCount++;
+            var nextStep = ExpeditionHelper.FindAheadUnit(Location, Direction, Area);
+            if (nextStep == null)
             {
-                case Constants.DirectionUp:
-                    break;
-                case Constants.DirectionRight:
-                    break;
-                case Constants.DirectionDown:
-                    break;
-                case Constants.DirectionLeft:
-                    break;
+                Console.WriteLine($"{JsonConvert.SerializeObject(Location)} ahead step is Boundary");
+                return;
             }
+            nextStep.PercyMark = true;
+            nextStep.PercyMarkOrder.Add(StepCount);
+            Location = nextStep;
         }
         /// <summary>
         /// 后退
         /// </summary>
         public void GoBack ()
         {
-            switch (Direction)
+            StepCount++;
+            var nextStep = ExpeditionHelper.FindBackUnit(Location, Direction, Area);
+            if (nextStep == null)
             {
-                case Constants.DirectionUp: 
-                    break;
-                case Constants.DirectionRight: 
-                    break;
-                case Constants.DirectionDown: 
-                    break;
-                case Constants.DirectionLeft: 
-                    break;
+                Console.WriteLine($"{JsonConvert.SerializeObject(Location)} back step is Boundary");
+                return;
+            }
+            nextStep.PercyMark = true;
+            nextStep.PercyMarkOrder.Add(StepCount);
+            Location = nextStep;
+        }
+
+        /// <summary>
+        /// 放出迷你直升机
+        /// </summary>
+        public void ReleaseIngenuity()
+        {
+            Ingenuity.Explore(Location, Area);
+        }
+
+        /// <summary>
+        /// 执行命令
+        /// </summary>
+        /// <param name="order"></param>
+        public void ExcutingAnOrder(string order)
+        {
+            foreach (var c in order)
+            {
+                switch (c)
+                {
+                    case 'F':  GoAhead();
+                        break;
+                    case 'B':  GoBack();
+                        break;
+                    case 'L':  RotateLeft();
+                        break;
+                    case 'R':  RotateRight();
+                        break;
+                }
             }
         }
     }
