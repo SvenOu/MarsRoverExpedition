@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using MarsRoverExpedition.modules.common.Helper;
 using MarsRoverExpedition.modules.common.Model;
 using MarsRoverExpedition.modules.expedition.models.dto;
@@ -42,7 +43,7 @@ namespace MarsRoverExpedition.modules.expedition.services.impl
             return CommonResponse<object>.Success(new
             {
                 LastStep = lastStep.X+lastStep.Y,
-                ExplorePercentage = explorePercentage * 100.0f + "%" 
+                ExplorePercentage = Convert.ToDouble(explorePercentage * 100.0f).ToString("0.00") + "%" 
             });
         }
 

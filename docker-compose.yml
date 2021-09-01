@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  authenticationcenter.sts.identity:
+    image: 54.226.170.75:8002/marsroverexpedition:latest
+    build:
+      context: .
+      dockerfile: ./MarsRoverExpedition/Dockerfile
+    container_name: MarsRoverExpedition
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+#      - ASPNETCORE_URLS=https://+:443;http://+:80
+#      - ASPNETCORE_HTTPS_PORT=4431-
+#      - ASPNETCORE_Kestrel__Certificates__Default__Password=test2test
+#      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+#    volumes:
+#      - './config/serilog.json:/app/serilog.json'
+#      - './sts/appsettings.json:/app/appsettings.json'
+#      - './https/aspnetapp.pfx:/https/aspnetapp.pfx:ro'
+    ports:
+      - 8004:80
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50M"
