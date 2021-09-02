@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'aws_dev_54_226_170_75_slave' }
+    agent { label 'ubuntu_mac' }
 
     stages {
 		stage ('Clean workspace') {
