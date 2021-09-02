@@ -18,9 +18,12 @@ pipeline {
 		  		echo 'Running test ...' + env.BRANCH_NAME
 		  }
 		}
-// 		stage('Docker') {
-// 			steps {
-// 				script {			
+		stage('Docker') {
+			steps {
+				script {	
+                    if(env.BRANCH_NAME == 'master'){
+                        echo "Building tag with ${env.BUILD_ID}"
+                    }		
 // 					if(env.BRANCH_NAME == 'dev'){
 // 						echo "Building tag with ${env.BUILD_ID}"
 // 						sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 231587286057.dkr.ecr.us-east-1.amazonaws.com"
@@ -30,7 +33,7 @@ pipeline {
 // 						sh "docker image rm appointment-api:dev${env.BUILD_ID}"
 // 						sh "docker image rm 231587286057.dkr.ecr.us-east-1.amazonaws.com/appointment-api:dev${env.BUILD_ID}"
 // 					}
-// 				
+// 
 // 					if(env.BRANCH_NAME == 'stage'){
 // 						echo "Building tag with ${env.BUILD_ID}"
 // 						sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 231587286057.dkr.ecr.us-east-1.amazonaws.com"
@@ -40,10 +43,10 @@ pipeline {
 // 						sh "docker image rm  appointment-api:stage${env.BUILD_ID}"
 // 						sh "docker image rm 231587286057.dkr.ecr.us-east-1.amazonaws.com/appointment-api:stage${env.BUILD_ID}"
 // 					}
-// 				}
-// 
-// 			}
-// 		 } 
+				}
+
+			}
+		 } 
 // 		 stage('Deployment') {
 // 		 	steps {
 // 				script{
