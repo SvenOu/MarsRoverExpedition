@@ -1,6 +1,11 @@
 pipeline {
     agent { label 'ubuntu_mac' }
-
+	environment {
+		REGISTRY_HOST = "54.226.170.75:8002"
+		DOCKER_REGISTRY_LOCAL_HOST = "127.0.0.1:8002"
+		TAG_NAME = "marsroverexpedition"
+		VERSION_NAME = "latest"
+    }
     stages {
 		stage ('Clean workspace') {
 			steps {
@@ -22,11 +27,11 @@ pipeline {
 			steps {
 				script {	
                     if(env.BRANCH_NAME == 'master'){
-                        echo "Building tag with marsroverexpedition:latest."
+                        echo "Building tag with ${TAG_NAME}:${VERSION_NAME} ."
                         sh "pwd"
-                        sh "docker build -t 54.226.170.75:8002/marsroverexpedition:latest ."
-                        sh "docker push 54.226.170.75:8002/marsroverexpedition:latest"
-                        sh "docker image rm 54.226.170.75:8002/marsroverexpedition:latest"
+                        sh "docker build -t ${REGISTRY_HOST}/${TAG_NAME}:${VERSION_NAME} ."
+                        sh "docker push ${REGISTRY_HOST}/${TAG_NAME}:${VERSION_NAME}"
+                        sh "docker image rm ${REGISTRY_HOST}/${TAG_NAME}:${VERSION_NAME}"
                         echo "finish Docker stage."
                     }		
 				}
@@ -42,11 +47,11 @@ pipeline {
 //                         configFileProvider([configFile(fileId: '8f9c6e39-e87a-4b7d-a7f0-a62fdaf822be', targetLocation: './config/service.json')]) {}
 				  		sshPublisher(publishers: [sshPublisherDesc(configName: 'unbuntu_54_226_170_75', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''
 						  pwd
-						  sudo docker stop marsroverexpedition 
-						  sudo docker rm marsroverexpedition
-                          sudo docker run --name marsroverexpedition -d  -e ASPNETCORE_ENVIRONMENT="Development" -p 8004:80  -v marsroverexpedition-data:/var/marsroverexpedition_home 127.0.0.1:8002/marsroverexpedition:latest
+						  sudo docker stop ${TAG_NAME} 
+						  sudo docker rm ${TAG_NAME}
+                          sudo docker run --name ${TAG_NAME} -d  -e ASPNETCORE_ENVIRONMENT="Development" -p 8004:80  -v ${TAG_NAME}-data:/var/${TAG_NAME}_home ${DOCKER_REGISTRY_LOCAL_HOST}/${TAG_NAME}:${VERSION_NAME}
 						   ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+',
-						    remoteDirectory: 'MarsRoverExpedition/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'config/*.json')],
+						    remoteDirectory: '${TAG_NAME}/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'config/*.json')],
 						     usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])       
 					}
 				}
