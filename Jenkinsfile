@@ -43,7 +43,7 @@ pipeline {
 				  		sshPublisher(publishers: [sshPublisherDesc(configName: 'unbuntu_54_226_170_75', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''
 						  pwd
 						  sudo docker stop marsroverexpedition 
-						  docker rm marsroverexpedition
+						  sudo docker rm marsroverexpedition
                           sudo docker run --name marsroverexpedition -d  -e ASPNETCORE_ENVIRONMENT="Development" -p 8004:80  -v marsroverexpedition-data:/var/marsroverexpedition_home 127.0.0.1:8002/marsroverexpedition:latest
 						   ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+',
 						    remoteDirectory: 'MarsRoverExpedition/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'config/*.json')],
