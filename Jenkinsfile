@@ -50,7 +50,7 @@ pipeline {
 		 stage('Deployment') {
 		 	steps {
 				script{
-					if(env.BRANCH_NAME == 'dev') {
+					if(env.BRANCH_NAME == 'master') {
 						echo "Deployment to dev environment"
 // 						configFileProvider([configFile(fileId: '2d50994e-a2eb-4c1b-9575-edfdec99c3a0', targetLocation: './config/libConfig.json')]) {}
 //                         configFileProvider([configFile(fileId: '8f9c6e39-e87a-4b7d-a7f0-a62fdaf822be', targetLocation: './config/service.json')]) {}
