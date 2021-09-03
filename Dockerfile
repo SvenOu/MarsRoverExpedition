@@ -10,6 +10,7 @@ RUN dotnet restore "MarsRoverExpedition/MarsRoverExpedition.csproj"
 COPY . .
 WORKDIR "/src/MarsRoverExpedition"
 RUN pwd
+RUN ls
 RUN dotnet build "MarsRoverExpedition.csproj" -c Release -o /app/build
 
 FROM build AS publish
