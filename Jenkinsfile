@@ -22,7 +22,9 @@ pipeline {
 			steps {
 				script {	
                     if(env.BRANCH_NAME == 'master'){
-                        echo "Building tag with ${env.BUILD_ID}"
+                        echo "Building tag with marsroverexpedition:latest"
+                        sh "sudo docker build -t 54.226.170.75:8002/marsroverexpedition:latest"
+                        sh "sudo docker push 54.226.170.75:8002/marsroverexpedition:latest"
                     }		
 // 					if(env.BRANCH_NAME == 'dev'){
 // 						echo "Building tag with ${env.BUILD_ID}"
@@ -56,6 +58,8 @@ pipeline {
 //                         configFileProvider([configFile(fileId: '8f9c6e39-e87a-4b7d-a7f0-a62fdaf822be', targetLocation: './config/service.json')]) {}
 				  		sshPublisher(publishers: [sshPublisherDesc(configName: 'unbuntu_54_226_170_75', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''
 						  pwd
+						  sudo docker stop marsroverexpedition && docker rm marsroverexpedition
+                          sudo docker run --name marsroverexpedition -d  -e ASPNETCORE_ENVIRONMENT="Development" -p 8004:80  -v marsroverexpedition-data:/var/marsroverexpedition_home 127.0.0.1:8002/marsroverexpedition:latest
 						   ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+',
 						    remoteDirectory: 'MarsRoverExpedition/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'config/*.json')],
 						     usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])       
