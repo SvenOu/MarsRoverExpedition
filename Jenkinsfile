@@ -23,7 +23,7 @@ pipeline {
 				script {	
                     if(env.BRANCH_NAME == 'master'){
                         echo "Building tag with marsroverexpedition:latest"
-                        pwd
+                        sh "pwd"
                         sh "docker build -t 54.226.170.75:8002/marsroverexpedition:latest"
                         sh "docker push 54.226.170.75:8002/marsroverexpedition:latest"
                         echo "Docker finish"
