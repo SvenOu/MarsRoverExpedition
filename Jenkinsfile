@@ -47,19 +47,20 @@ pipeline {
 
 			}
 		 } 
-// 		 stage('Deployment') {
-// 		 	steps {
-// 				script{
-// 					if(env.BRANCH_NAME == 'dev') {
-// 						echo "Deployment to dev environment"
+		 stage('Deployment') {
+		 	steps {
+				script{
+					if(env.BRANCH_NAME == 'dev') {
+						echo "Deployment to dev environment"
 // 						configFileProvider([configFile(fileId: '2d50994e-a2eb-4c1b-9575-edfdec99c3a0', targetLocation: './config/libConfig.json')]) {}
 //                         configFileProvider([configFile(fileId: '8f9c6e39-e87a-4b7d-a7f0-a62fdaf822be', targetLocation: './config/service.json')]) {}
-// 				  		sshPublisher(publishers: [sshPublisherDesc(configName: 'aws-api-gate-dev', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''
-// 						  pwd
-// 						  cd  appointmentapi
-// 						  sh deploy.sh dev${BUILD_NUMBER} ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'appointmentapi/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'config/*.json')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])       
-// 					}
-// 					
+				  		sshPublisher(publishers: [sshPublisherDesc(configName: 'unbuntu_54_226_170_75', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''
+						  pwd
+						   ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+',
+						    remoteDirectory: 'MarsRoverExpedition/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'config/*.json')],
+						     usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])       
+					}
+
 // 					if(env.BRANCH_NAME == 'stage') {
 //                         echo "Deployment to stage environment"
 // 						// configFileProvider([configFile(fileId: '834dd8fd-0b28-4841-965b-0202f9bee55e', targetLocation: './config/appsettings.json')]) {}
@@ -69,10 +70,10 @@ pipeline {
 // 						  cd  appointmentapi
 // 						  sh deploy.sh stage${BUILD_NUMBER} ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'appointmentapi/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'config/*.json')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
 // 					}
-// 				}
-// 
-// 			}
-// 		 }
+				}
+
+			}
+		 }
 		 
     }
 }
