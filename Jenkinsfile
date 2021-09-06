@@ -44,7 +44,7 @@ pipeline {
 						  pwd
 						  sudo docker stop marsroverexpedition 
 						  sudo docker rm marsroverexpedition
-						  sudo docker image rm 127.0.0.1:8002/marsroverexpedition:latest
+						  sudo docker pull 127.0.0.1:8002/marsroverexpedition:latest 
                           sudo docker run --name marsroverexpedition -d  -e ASPNETCORE_ENVIRONMENT="Development" -p 8004:80 127.0.0.1:8002/marsroverexpedition:latest
 						   ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+',
 						    remoteDirectory: 'MarsRoverExpedition/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'config/*.json')],
