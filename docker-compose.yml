@@ -4,7 +4,7 @@ services:
     image: 54.226.170.75:8002/marsroverexpedition:latest
     build:
       context: .
-      dockerfile: ./MarsRoverExpedition/Dockerfile
+      dockerfile: ./Dockerfile
     container_name: MarsRoverExpedition
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
