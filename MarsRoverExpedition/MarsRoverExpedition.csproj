@@ -13,6 +13,6 @@
     </ItemGroup>
     
     <PropertyGroup>
-        <DocumentationFile>.\Docs\MarsRoverExpedition.xml</DocumentationFile>
+        <DocumentationFile>./Docs/MarsRoverExpedition.xml</DocumentationFile>
     </PropertyGroup>
 </Project>
