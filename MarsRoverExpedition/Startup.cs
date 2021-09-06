@@ -17,7 +17,7 @@ namespace MarsRoverExpedition
             services.AddSwaggerGen(c =>
             {
                 var appName = "MarsRoverExpedition";
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = appName, Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = appName, Version = "v1.1" });
                 var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录（绝对，不受工作目录影响，建议采用此方法获取路径）
                 var xmlPath = Path.Combine(basePath, appName + ".xml");
                 // Console.WriteLine($"-----xmlPath-------: {xmlPath}");
