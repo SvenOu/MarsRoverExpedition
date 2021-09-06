@@ -22,11 +22,11 @@ pipeline {
 			steps {
 				script {	
                     if(env.BRANCH_NAME == 'master'){
-                        echo "Building tag with marsroverexpedition:latest."
+                        echo "Building tag with marsroverexpedition:{env.BUILD_ID}."
                         sh "pwd"
-                        sh "docker build -t 54.226.170.75:8002/marsroverexpedition:latest ."
-                        sh "docker push 54.226.170.75:8002/marsroverexpedition:latest"
-                        sh "docker image rm 54.226.170.75:8002/marsroverexpedition:latest"
+                        sh "docker build -t 54.226.170.75:8002/marsroverexpedition:{env.BUILD_ID} ."
+                        sh "docker push 54.226.170.75:8002/marsroverexpedition:{env.BUILD_ID}"
+                        sh "docker image rm 54.226.170.75:8002/marsroverexpedition:{env.BUILD_ID}"
                         echo "finish Docker stage."
                     }		
 				}
@@ -44,7 +44,7 @@ pipeline {
 						  pwd
 						  sudo docker stop marsroverexpedition 
 						  sudo docker rm marsroverexpedition
-                          sudo docker run --name marsroverexpedition -d  -e ASPNETCORE_ENVIRONMENT="Development" -p 8004:80  -v marsroverexpedition-data:/var/marsroverexpedition_home 127.0.0.1:8002/marsroverexpedition:latest
+                          sudo docker run --name marsroverexpedition -d  -e ASPNETCORE_ENVIRONMENT="Development" -p 8004:80 127.0.0.1:8002/marsroverexpedition:latest
 						   ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+',
 						    remoteDirectory: 'MarsRoverExpedition/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'config/*.json')],
 						     usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])       
