@@ -14,5 +14,6 @@
     
     <PropertyGroup>
         <DocumentationFile>./Docs/MarsRoverExpedition.xml</DocumentationFile>
+        <DebugType>portable</DebugType>
     </PropertyGroup>
 </Project>
