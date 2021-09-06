@@ -22,11 +22,11 @@ pipeline {
 			steps {
 				script {	
                     if(env.BRANCH_NAME == 'master'){
-                        echo "Building tag with marsroverexpedition:{env.BUILD_ID}."
+                        echo "Building tag with marsroverexpedition:latest."
                         sh "pwd"
-                        sh "docker build -t 54.226.170.75:8002/marsroverexpedition:{env.BUILD_ID} ."
-                        sh "docker push 54.226.170.75:8002/marsroverexpedition:{env.BUILD_ID}"
-                        sh "docker image rm 54.226.170.75:8002/marsroverexpedition:{env.BUILD_ID}"
+                        sh "docker build -t 54.226.170.75:8002/marsroverexpedition:latest ."
+                        sh "docker push 54.226.170.75:8002/marsroverexpedition:latest"
+                        sh "docker image rm 54.226.170.75:8002/marsroverexpedition:latest"
                         echo "finish Docker stage."
                     }		
 				}
