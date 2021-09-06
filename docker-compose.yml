@@ -1,6 +1,6 @@
 version: '3.4'
 services:
-  authenticationcenter.sts.identity:
+  marsroverexpedition_service:
     image: 54.226.170.75:8002/marsroverexpedition:latest
     build:
       context: .
