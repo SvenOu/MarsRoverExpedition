@@ -7,7 +7,7 @@ namespace MarsRoverExpedition.modules.expedition.models.Param
         /// <summary>
         /// 命令
         /// </summary>
-        [DefaultValue("FFLFFRBBHFFFFF")]
+        [DefaultValue("FFFLFFRBBHFFFFF")]
         public string Order { get; set; }
         
         /// <summary>
